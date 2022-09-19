@@ -25,10 +25,6 @@ public class PlayerControllerX : MonoBehaviour
         forwardInput = Input.GetAxis("Vertical");
         // get the user's horizontal input
         horizontalInput = Input.GetAxis("Horizontal");
-
-        // move the plane forward and backward with horizontal key
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
-        
         //move plane at constant speed
         transform.Translate(Vector3.forward * speed);
 
