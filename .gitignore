@@ -16,6 +16,7 @@ node_modules
 test/
 
 .idea
+.meta
 
 Library/
 
