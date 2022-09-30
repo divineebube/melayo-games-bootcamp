@@ -5,18 +5,18 @@ using UnityEngine;
 public class PlayerControllerY : MonoBehaviour
 {
     public GameObject dogPrefab;
-    public bool delayTime = false;
-    public float delayTimeMax;
+    public bool spawned = false;
+    public float decay;
 
     // Update is called once per frame
     void Update()
     {
         // On spacebar press, send dog, on a 1 second interval/delaytime
         Reset();
-        if (Input.GetKeyDown(KeyCode.Space) && !delayTime)
+        if (Input.GetKeyDown(KeyCode.Space) && !spawned)
         {
-            delayTimeMax = 1.0f;
-            delayTime = true;
+            decay = 1.0f;
+            spawned = true;
            Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
             
         }
@@ -25,14 +25,14 @@ public class PlayerControllerY : MonoBehaviour
     
     private void Reset()
     {
-        if(delayTime && delayTimeMax > 0)
+        if(spawned && decay > 0)
         {
-            delayTimeMax -= Time.deltaTime;
+            decay -= Time.deltaTime;
         }
-        if(delayTimeMax < 0)
+        if(decay < 0)
         {
-            delayTimeMax = 0;
-            delayTime = false;
+            decay = 0;
+            spawned = false;
         }
     }
 
